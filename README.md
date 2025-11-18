@@ -1,0 +1,1 @@
+You are part of a development team tasked with building a Login System for a web or mobile application. The system must support user authentication and store user credentials securely using Firebase Authentication and Firebase Realtime Database or Firestore.
