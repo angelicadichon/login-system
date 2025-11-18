@@ -17,8 +17,11 @@ function sanitizeEmailForFirebaseKey(string $email): string {
 }
 
 function initializeFirebaseFactory(): Factory {
+    $serviceAccountPath = $_ENV['FIREBASE_SERVICE_ACCOUNT_KEY_PATH'] ?? './serviceAccountKey.json';
+    $fullPath = __DIR__ . '/' . $serviceAccountPath;
+    
     return (new Factory)
-        ->withServiceAccount(__DIR__ . '/serviceAccountKey.json')
+        ->withServiceAccount($fullPath)
         ->withDatabaseUri($_ENV['FIREBASE_DATABASE_URL']);
 }
 
