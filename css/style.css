@@ -1,0 +1,388 @@
+/* ==============================
+   :ROOT VARIABLES
+   ============================== */
+:root {
+    --primary:#2e7d32;
+    --primary-light:#4caf50;
+    --primary-dark:#1b5e20;
+    --accent:#ffd700;
+    --text:#2b2b2b;
+    --muted:#6b6b6b;
+    --bg:#f6f7f9;
+    --card:rgba(255,255,255,0.96);
+    --glass:rgba(255,255,255,0.85);
+    --radius:12px;
+    --shadow:0 10px 30px rgba(0,0,0,0.10);
+    --transition: all .22s ease;
+    --max-width:420px;
+}
+
+/* ==============================
+   GLOBAL STYLES
+   ============================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('../images/waterfall.jpg') center/cover no-repeat;
+    position: relative;
+    color: var(--text);
+}
+
+/* subtle dark overlay for contrast */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    backdrop-filter: blur(6px);
+    z-index: -1;
+}
+
+/* ==============================
+   FORM CONTAINER
+   ============================== */
+.form-container,
+.container {
+    width: 92%;
+    max-width: var(--max-width);
+    background: var(--card);
+    padding: 28px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.03);
+}
+
+h2 {
+    color: var(--primary);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 6px;
+    text-align: center;
+}
+
+/* ==============================
+   FORM ELEMENTS
+   ============================== */
+.form-group,
+.input-group {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: var(--muted);
+    font-weight: 600;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(0,0,0,0.06);
+    background: var(--bg);
+    font-size: 15px;
+    color: var(--text);
+    transition: var(--transition);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 8px 20px rgba(46,125,50,0.08);
+    background: #fff;
+}
+
+/* hide browser password toggles */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear,
+input[type="password"]::-webkit-credentials-auto-fill-button,
+input[type="password"]::-webkit-contacts-auto-fill-button,
+input[type="password"]::-webkit-strong-password-auto-fill-button,
+input[type="password"]::-webkit-textfield-decoration-container {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* ==============================
+   PASSWORD TOGGLE
+   ============================== */
+/* Ensure eye icon is steady and has no green background */
+.password-toggle {
+    position: absolute;
+    right: 10px;
+    top: 10%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+    border: 0;
+    color: #6f6f6f;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    box-shadow: none !important;
+}
+
+.password-toggle i {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.password-toggle:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* ==============================
+   BUTTONS
+   ============================== */
+.submit-btn,
+button[type="submit"] {
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 0;
+    background: var(--primary);
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+button:hover,
+.submit-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+/* ==============================
+   FOOTER LINKS
+   ============================== */
+.form-footer {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--muted);
+    padding-top: 12px;
+    border-top: 1px solid rgba(0,0,0,0.03);
+}
+
+.form-footer a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.form-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ==============================
+   ERROR MESSAGES
+   ============================== */
+.error-message {
+    color: #e53935;
+    font-size: 13px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* ==============================
+   SUCCESS MESSAGE
+   ============================== */
+.success-message {
+    color: #0a7a05;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* ==============================
+   MODALS
+   ============================== */
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.45);
+    align-items: center;
+    justify-content: center;
+    z-index: 1200;
+    padding: 18px;
+}
+
+.modal .modal-content {
+    width: 100%;
+    max-width: 420px;
+    background: var(--glass);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(0,0,0,0.04);
+}
+
+.close {
+    float: right;
+    font-size: 22px;
+    color: #666;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.close:hover, .close:active {
+    background: transparent;
+    color: #666;
+}
+
+/* ==============================
+   LOADING OVERLAY
+   ============================== */
+#loadingScreen {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: rgba(0,0,0,0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    backdrop-filter: blur(3px);
+}
+
+#loadingScreen .loading-text {
+    font-size: 1.1rem;
+    color: var(--primary);
+    font-weight: 800;
+}
+
+/* ==============================
+   SUCCESS OVERLAY
+   ============================== */
+.overlay-success {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2200;
+    background: rgba(0,0,0,0.35);
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay-success .message-content {
+    background: var(--card);
+    padding: 26px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.overlay-success h1 {
+    font-size: 20px;
+    color: var(--primary);
+    margin-bottom: 8px;
+}
+
+/* ==============================
+   RESPONSIVE
+   ============================== */
+@media (max-width: 520px) {
+    :root {
+        --max-width: 360px;
+        --radius: 10px;
+    }
+
+    .form-container {
+        padding: 22px;
+        width: 94%;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+
+    .password-toggle {
+        right: 8px;
+    }
+}
+
+/* Position forgot password below login, right aligned */
+.forgot-row {
+    text-align: right;
+    margin: 8px 0 12px 0;
+}
+
+.forgot-password {
+    color: var(--primary);
+    font-size: 13px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.forgot-password:hover {
+    text-decoration: underline;
+}
+
+/* remove any transform on small inline buttons so layout stays steady */
+button[type="button"], .password-toggle {
+    transform: none !important;
+}
+
+/* visual for disabled password inputs */
+.disabled-field {
+    opacity: 0.6;
+    background: #f3f4f6;
+    cursor: not-allowed;
+}
+
+/* group highlight while waiting verification */
+.password-group.needs-verify {
+    border-radius: 8px;
+    padding: 6px;
+    transition: box-shadow .18s ease, border-color .18s ease;
+    box-shadow: 0 0 0 3px rgba(255,165,0,0.06); /* subtle amber hint */
+}
+
+/* group style when verified */
+.password-group.verified {
+    box-shadow: 0 0 0 3px rgba(46,125,50,0.12);
+}
+
+/* ensure final register button disabled style */
+button[disabled], .submit-btn[disabled]{
+    opacity: .6;
+    cursor: not-allowed;
+    transform:none;
+}
